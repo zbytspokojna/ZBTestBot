@@ -10,10 +10,10 @@ module.exports = {
 			return message.channel.send('Hello!');
 		} else if (args[0] === `${words_array[1]}`) {
 			return message.channel.send('Goodbye!');
-		} else if (args[0] === `${words_array[2]}` && args[1] !== `${words_array[3]}`) {
+		} else if (args[0] === `${words_array[2]}` && !args[1]) {
 			return message.channel.send('Meow!');
 		} else if (args[0] === `${words_array[2]}` && args[1] === `${words_array[3]}`) {
-			return message.channel.send('Error!');
+			return message.channel.send('Hisss!');
 		}
 		message.channel.send(`Command name: speak\nArguments: ${args}\nSorry, but no method is implemented for those arguments`);
 	},
