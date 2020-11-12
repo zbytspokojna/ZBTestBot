@@ -7,7 +7,10 @@ client.commands = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 const { prefix, token, animator } = require('./config.json');
+const welcomeId = '776526920182792238';
+const rulesId = '776572377088786443';
 
+// tests at start
 client.once('ready', () => {
 	console.log(commandFiles);
 	console.log(`prefix = ${prefix}`);
@@ -16,21 +19,20 @@ client.once('ready', () => {
 
 client.login(token);
 
+// making a list of possible commands
 for(const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	client.commands.set(command.name, command);
 }
 
+// welcome msg
 client.on('guildMemberAdd', member => {
-	console.log('I am in');
-	// eslint-disable-next-line no-shadow
-	const channel = member.guild.channels.find(channel => channel.name === 'welcome');
-	console.log('I am in 2');
-	if (!channel) return;
-	console.log('I am in 3');
-	channel.send(`Welcome to out server, ${member}.\nPlease read the rules in the rules channel!`);
+	const msg = `Welcome to our server, ${member}. Please check out ${member.guild.channels.cache.get(rulesId).toString()}!`;
+	const channel = member.guild.channels.cache.get(welcomeId);
+	channel.send(msg);
 });
 
+// commands
 client.on('message', message =>{
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
