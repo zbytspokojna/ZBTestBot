@@ -1,0 +1,10 @@
+{
+    "prefix" : "!",
+    "token" : "Nzc2MzM4NTE5MTg1ODE3NjEx.X6zblg.xq7lMAjGOGtMvgzYScThi6h6UAo",
+    "bot_age" : 1,
+    "words_array" : ["Hi!", "Bye!","Cat"],
+    "animator" : {
+        "name" : "ZbytSpokojna",
+        "coven" : "artist-background"
+    }
+}
