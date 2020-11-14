@@ -6,18 +6,25 @@ client.commands = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
+const welcome = require('./listeners/welcome');
+const blacklist = require('./listeners/blacklist');
 const { prefix, token, animator } = require('./config.json');
-const welcomeId = '776526920182792238';
-const rulesId = '776572377088786443';
 
-// tests at start
-client.once('ready', () => {
+// welcome and tests
+client.on('ready', () => {
 	console.log(commandFiles);
 	console.log(`prefix = ${prefix}`);
 	console.log(`${animator.name} is in coven ${animator.coven}`);
+	welcome(client);
 });
 
 client.login(token);
+
+// blacklist for words
+client.on('message', message => {
+	if (message.author.bot) return;
+	blacklist(message);
+});
 
 // making a list of possible commands
 for(const file of commandFiles) {
@@ -25,15 +32,8 @@ for(const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
-// welcome msg
-client.on('guildMemberAdd', member => {
-	const msg = `Welcome to our server, ${member}. Please check out ${member.guild.channels.cache.get(rulesId).toString()}!`;
-	const channel = member.guild.channels.cache.get(welcomeId);
-	channel.send(msg);
-});
-
 // commands
-client.on('message', message =>{
+client.on('message', message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const commandName = args.shift().toLowerCase();
