@@ -3,10 +3,14 @@ const Discord = require('discord.js');
 module.exports = {
 	name:'feel',
 	description: 'Feelings Command',
+	arguments: 'Needs one argument from the list:\nbad\ngood\ngreat',
 	execute(message, args) {
+		// if they did not give any arguments
 		if(!args.length) {
 			return message.channel.send(`You have not provided any arguments, ${message.author}!`);
+		// else we search what they choose
 		} else if (args[0] === 'bad') {
+			// creating an embed with specific content
 			const embed = new Discord.MessageEmbed()
 				.setColor('#03c2fc')
 				.setTitle('FEELINGS CORNER')
@@ -14,6 +18,7 @@ module.exports = {
 				.setImage('https://i.redd.it/zzmzrnkjwjs41.jpg')
 				.setFooter('Feelings Bot')
 				.setTimestamp();
+			// and then sending it
 			return message.channel.send(embed);
 		} else if (args[0] === 'good') {
 			const embed = new Discord.MessageEmbed()
@@ -34,6 +39,7 @@ module.exports = {
 				.setTimestamp();
 			return message.channel.send(embed);
 		}
+		// if the argument they provided was not found
 		message.channel.send(`Command name: feel\nArguments: ${args}\nSorry, but no method is implemented for those arguments`);
 	},
 };

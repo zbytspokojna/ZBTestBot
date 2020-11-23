@@ -1,0 +1,49 @@
+{
+    "commands": [
+        {
+            "name": "ban",
+            "description": "Ban Command",
+            "arguments": "Needs @mention of a user you want to suggest banning."
+        },
+        {
+            "name": "feel",
+            "description": "Feelings Command",
+            "arguments": "Needs one argument from the list:\nbad\ngood\ngreat"
+        },
+        {
+            "name": "help",
+            "description": "Help Command",
+            "arguments": "No arguments or name of command you want to check description of."
+        },
+        {
+            "name": "mcount",
+            "description": "Member count Command",
+            "arguments": "No arguments implemented"
+        },
+        {
+            "name": "me",
+            "description": "Personal info Command",
+            "arguments": "No arguments implemented"
+        },
+        {
+            "name": "ping",
+            "description": "Ping Command",
+            "arguments": "No arguments implemented"
+        },
+        {
+            "name": "server",
+            "description": "Server Info Command",
+            "arguments": "No arguments implemented"
+        },
+        {
+            "name": "sleep",
+            "description": "Sleep Reminder Command",
+            "arguments": "Needs two arguments:\nhours (max 23)\nminutes (max 60)"
+        },
+        {
+            "name": "speak",
+            "description": "Speak Bot Command",
+            "arguments": "Needs from 1 to 2 arguments from the list:\nHi!,Bye!,Cat,Dog "
+        }
+    ]
+}
